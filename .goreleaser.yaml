@@ -1,0 +1,101 @@
+# GoReleaser configuration for stripey_horse
+version: 2
+
+before:
+  hooks:
+    # Ensure dependencies are up to date
+    - go mod tidy
+
+builds:
+  - id: stripey_horse
+    binary: stripey_horse
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    # Skip unsupported combinations
+    ignore:
+      - goos: windows
+        goarch: arm64
+    ldflags:
+      - -s -w
+      - -X main.version={{.Version}}
+      - -X main.commit={{.Commit}}
+      - -X main.date={{.Date}}
+
+archives:
+  - id: stripey_horse
+    format: tar.gz
+    name_template: >-
+      {{ .ProjectName }}_
+      {{- .Version }}_
+      {{- title .Os }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else if eq .Arch "386" }}i386
+      {{- else }}{{ .Arch }}{{ end }}
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - README.md
+      - LICENSE*
+
+checksum:
+  name_template: 'checksums.txt'
+
+snapshot:
+  version_template: "{{ incpatch .Version }}-next"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - '^chore:'
+      - 'README'
+
+# Homebrew tap
+brews:
+  - name: stripey_horse
+    repository:
+      owner: benfaerber
+      name: homebrew-tap
+      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
+    folder: Formula
+    homepage: https://github.com/benfaerber/stripey-horse
+    description: "A knock-off Zebra renderer - CLI wrapper around Go ZPL renderer"
+    license: MIT
+    test: |
+      system "#{bin}/stripey_horse", "--version"
+    install: |
+      bin.install "stripey_horse"
+
+# GitHub Release
+release:
+  github:
+    owner: benfaerber
+    name: stripey-horse
+  draft: false
+  prerelease: auto
+  mode: append
+  header: |
+    ## Installation
+
+    ### Homebrew (macOS/Linux)
+    ```bash
+    brew install benfaerber/tap/stripey_horse
+    ```
+
+    ### Go Install
+    ```bash
+    go install github.com/benfaerber/stripey-horse@{{ .Tag }}
+    ```
+
+    ### Manual Installation
+    Download the appropriate binary for your platform below and add it to your PATH.

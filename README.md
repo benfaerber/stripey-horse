@@ -21,12 +21,37 @@ Luckily, there is a Go library that renders ZPL almost perfectly. This project p
 - **Near-perfect rendering** - comparable quality to Labelary
 - **Faster** - about 4x faster (see `./scripts/benchmark.php`)
 
-## Getting Started 
+## Installation
 
-You'll need the `go` compiler. This is for linux so use docker if you don't use linux.
-You could also figure out how to compile for your platform in `build.sh`
+### Homebrew (macOS/Linux)
+```bash
+brew install benfaerber/tap/stripey_horse
+```
 
+### Go Install
+```bash
+go install github.com/benfaerber/stripey-horse@latest
+```
+
+### Manual Installation
+Download the latest binary for your platform from [Releases](https://github.com/benfaerber/stripey-horse/releases) and add it to your PATH.
+
+### From Source
+```bash
+git clone https://github.com/benfaerber/stripey-horse.git
+cd stripey-horse
+go build -o stripey_horse
+```
+
+## Usage
+
+After installation, run:
+```bash
+stripey_horse
+```
+
+## Development
 
 - **Compile** - `./scripts/build.sh`
-- **Test Binary** - `./scripts/run_all.sh`   
-* **Benchmark** - `./scripts/benchmark.php 10`
+- **Test Binary** - `./scripts/run_all.sh`
+- **Benchmark** - `./scripts/benchmark.php 10`

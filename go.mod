@@ -1,4 +1,4 @@
-module stripey_horse
+module github.com/benfaerber/stripey-horse
 
 go 1.24.0
 

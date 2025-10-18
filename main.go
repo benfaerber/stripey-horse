@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"stripey_horse/app"
+	"github.com/benfaerber/stripey-horse/app"
 )
 
 func main() {
