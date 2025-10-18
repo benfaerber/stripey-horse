@@ -1,17 +1,7 @@
 # Stripey Horse 🦓
 ### A knock-off Zebra renderer
 
-A simple wrapper around a `Go` ZPL renderer to avoid constantly getting rate limited by [Labelary](https://labelary.com/service.html).
-
-## Why?
-
-The Labelary API is great, but it only allows 5 requests per second. This leads to constant errors and failures when generating labels at scale.
-
-Sadly, there are no simple ways to pay for higher limits. You have to contact Labelary directly and negotiate a custom deal to self-host.
-
-Luckily, there is a Go library that renders ZPL almost perfectly. This project provides:
-- A CLI wrapper around the Go ZPL renderer
-- A PHP wrapper around the CLI for easy integration
+A simple wrapper around a `Go` ZPL renderer ([ingridhq/zebrash](https://github.com/ingridhq/zebrash)) to avoid constantly getting rate limited by [Labelary](https://labelary.com/service.html).
 
 ## Getting Started
 This CLI uses a JSON object for config and then the binary ZPL should be piped in.
@@ -33,6 +23,15 @@ $imageData = $client->convertZplToRawImage($zplContent, $config);
 file_put_contents("my_converted_image.png", $imageData);
 ```
 
+## Why?
+
+The Labelary API is great, but it only allows 5 requests per second. This leads to constant errors and failures when generating labels at scale.
+
+Sadly, there are no simple ways to pay for higher limits. You have to contact Labelary directly and negotiate a custom deal to self-host.
+
+Luckily, there is a Go library that renders ZPL almost perfectly. This project provides:
+- A CLI wrapper around the Go ZPL renderer
+- A PHP wrapper around the CLI for easy integration
 
 
 ## Benefits
