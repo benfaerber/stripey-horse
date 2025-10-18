@@ -13,6 +13,28 @@ Luckily, there is a Go library that renders ZPL almost perfectly. This project p
 - A CLI wrapper around the Go ZPL renderer
 - A PHP wrapper around the CLI for easy integration
 
+## Getting Started
+This CLI uses a JSON object for config and then the binary ZPL should be piped in.
+This program was decided for process communication (ie PHP to Go) so it deals with binary blobs instead of filenames.
+```sh
+CONFIG='{"labelWidthMm": 101.6, "labelHeightMm": 152.4, "dpmm": 8, "rotation": 0}'
+stripey_horse --config "$CONFIG" --output "./test_data/test_output.png" < "$zpl_file"
+```
+Or using the [PHP client](https://github.com/benfaerber/zpl-to-png):
+```php
+$client = new StripeyHorseClient("/usr/bin/stripey_horse");
+$config = StripeyHorseConfig::builder()
+    ->labelPreset("6x4")
+    ->rotation(90)
+    ->build();
+
+$imageData = $client->convertZplToRawImage($zplContent, $config);
+
+file_put_contents("my_converted_image.png", $imageData);
+```
+
+
+
 ## Benefits
 
 - **No rate limits** - render as many labels as you need
