@@ -40,7 +40,6 @@ Luckily, there is a Go library that renders ZPL almost perfectly. This project p
 - **No external dependencies** - works completely offline
 - **Cost effective** - hence "Stripey Horse" instead of "Zebra"
 - **Near-perfect rendering** - comparable quality to Labelary
-- **Faster** - about 4x faster (see `./scripts/benchmark.php`)
 
 ## Installation
 
