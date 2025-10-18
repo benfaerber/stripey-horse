@@ -23,11 +23,6 @@ Luckily, there is a Go library that renders ZPL almost perfectly. This project p
 
 ## Installation
 
-### Homebrew (macOS/Linux)
-```bash
-brew install benfaerber/tap/stripey_horse
-```
-
 ### Go Install
 ```bash
 go install github.com/benfaerber/stripey-horse@latest

@@ -60,22 +60,6 @@ changelog:
       - '^chore:'
       - 'README'
 
-# Homebrew tap
-brews:
-  - name: stripey_horse
-    repository:
-      owner: benfaerber
-      name: homebrew-tap
-      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
-    folder: Formula
-    homepage: https://github.com/benfaerber/stripey-horse
-    description: "A knock-off Zebra renderer - CLI wrapper around Go ZPL renderer"
-    license: MIT
-    test: |
-      system "#{bin}/stripey_horse", "--version"
-    install: |
-      bin.install "stripey_horse"
-
 # GitHub Release
 release:
   github:
@@ -86,11 +70,6 @@ release:
   mode: append
   header: |
     ## Installation
-
-    ### Homebrew (macOS/Linux)
-    ```bash
-    brew install benfaerber/tap/stripey_horse
-    ```
 
     ### Go Install
     ```bash
