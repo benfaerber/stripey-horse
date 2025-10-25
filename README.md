@@ -5,7 +5,7 @@ A simple wrapper around a `Go` ZPL renderer ([ingridhq/zebrash](https://github.c
 
 ## Getting Started
 This CLI uses a JSON object for config and then the binary ZPL should be piped in.
-This program was decided for process communication (ie PHP to Go) so it deals with binary blobs instead of filenames.
+This program was designed for process communication (ie PHP to Go) so it deals with binary blobs instead of filenames.
 ```sh
 CONFIG='{"labelWidthMm": 101.6, "labelHeightMm": 152.4, "dpmm": 8, "rotation": 0}'
 stripey_horse --config "$CONFIG" --output "./test_data/test_output.png" < "$zpl_file"
