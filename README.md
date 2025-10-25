@@ -13,7 +13,7 @@ This CLI uses a JSON object for config and then the binary ZPL should be piped i
 This program was designed for process communication (ie PHP to Go) so it deals with binary blobs instead of filenames.
 ```sh
 CONFIG='{"labelWidthMm": 101.6, "labelHeightMm": 152.4, "dpmm": 8, "rotation": 0}'
-stripey_horse --config "$CONFIG" --output "./test_data/test_output.png" < "$zpl_file"
+stripey-horse --config "$CONFIG" --output "./test_data/test_output.png" < "$zpl_file"
 ```
 Or using the [PHP client](https://github.com/benfaerber/zpl-to-png):
 ```php
@@ -37,7 +37,6 @@ Sadly, there are no simple ways to pay for higher limits. You have to contact La
 Luckily, there is a Go library that renders ZPL almost perfectly. This project provides:
 - A CLI wrapper around the Go ZPL renderer
 - A PHP wrapper around the CLI for easy integration
-
 
 ## Benefits
 
@@ -63,15 +62,20 @@ cd stripey-horse
 go build -o stripey_horse
 ```
 
-## Usage
-
-After installation, run:
-```bash
-stripey_horse
-```
-
 ## Development
 
 - **Compile** - `./scripts/build.sh`
 - **Test Binary** - `./scripts/run_all.sh`
 - **Benchmark** - `./scripts/benchmark.php 10`
+
+## This uses process communication, why no FFI?
+This was a tough design but I decided process communication was better
+for my use case (a PHP app needing to render ZPL files to PNGs and serve them to customers).
+
+### Reasons
+- FFI would require going Go -> C -> PHP
+- The C wrapper code would require manual memory management
+- The `.so` would have to be installed in the PHP env instead of just installing a simple binary
+- FFI would have saved around 50ms invocation time, but for an app that takes 300ms to even render, not worth the trouble!
+
+If someone wants to contribute and create an FFI solution, I'll definitely merge it as an optional feature.
