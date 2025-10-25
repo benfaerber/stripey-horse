@@ -14,8 +14,8 @@ type LabelConfig struct {
 }
 
 func printHelpMenu() {
-  fmt.Println("stripey_horse: a knock-off zebra renderer")
-  fmt.Println("https://github.com/trueleafmarket-dg/stripey_horse")
+  fmt.Println("stripey-horse: a knock-off zebra renderer")
+  fmt.Println("https://github.com/benfaerber/stripey-horse")
   fmt.Println("")
   
   pflag.Usage()

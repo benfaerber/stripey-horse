@@ -4,6 +4,11 @@
 A simple wrapper around a `Go` ZPL renderer ([ingridhq/zebrash](https://github.com/ingridhq/zebrash)) to avoid constantly getting rate limited by [Labelary](https://labelary.com/service.html).
 
 ## Getting Started
+First install the binary with `go`:
+```sh
+go install github.com/benfaerber/stripey-horse@latest
+```
+
 This CLI uses a JSON object for config and then the binary ZPL should be piped in.
 This program was designed for process communication (ie PHP to Go) so it deals with binary blobs instead of filenames.
 ```sh
