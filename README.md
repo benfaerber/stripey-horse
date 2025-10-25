@@ -61,7 +61,6 @@ go build -o stripey_horse
 
 - **Compile** - `./scripts/build.sh`
 - **Test Binary** - `./scripts/run_all.sh`
-- **Benchmark** - `./scripts/benchmark.php 10`
 
 ## This uses process communication, why no FFI?
 This was a tough design but I decided process communication was better
