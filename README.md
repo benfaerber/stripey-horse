@@ -12,7 +12,7 @@ stripey-horse --config "$CONFIG" --output "./test_data/test_output.png" < "$zpl_
 ```
 Or using the [PHP client](https://github.com/benfaerber/zpl-to-png):
 ```php
-$client = new StripeyHorseClient("/usr/bin/stripey_horse");
+$client = new StripeyHorseClient("/home/user/go/bin/stripey-horse");
 $config = StripeyHorseConfig::builder()
     ->labelPreset("6x4")
     ->rotation(90)
