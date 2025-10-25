@@ -4,11 +4,6 @@
 A simple wrapper around a `Go` ZPL renderer ([ingridhq/zebrash](https://github.com/ingridhq/zebrash)) to avoid constantly getting rate limited by [Labelary](https://labelary.com/service.html).
 
 ## Getting Started
-First install the binary with `go`:
-```sh
-go install github.com/benfaerber/stripey-horse@latest
-```
-
 This CLI uses a JSON object for config and then the binary ZPL should be piped in.
 This program was designed for process communication (ie PHP to Go) so it deals with binary blobs instead of filenames.
 ```sh
@@ -76,6 +71,5 @@ for my use case (a PHP app needing to render ZPL files to PNGs and serve them to
 - FFI would require going Go -> C -> PHP
 - The C wrapper code would require manual memory management
 - The `.so` would have to be installed in the PHP env instead of just installing a simple binary
+- FFI would connect PHP to this program. A crash would be fatal for PHP.  
 - FFI would have saved around 50ms invocation time, but for an app that takes 300ms to even render, not worth the trouble!
-
-If someone wants to contribute and create an FFI solution, I'll definitely merge it as an optional feature.
