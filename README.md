@@ -43,9 +43,12 @@ Luckily, there is a Go library that renders ZPL almost perfectly. This project p
 ## Installation
 
 ### Go Install
+1. Download [`go`](https://go.dev/) if you don't already have it.
+2. Install the binary:
 ```bash
 go install github.com/benfaerber/stripey-horse@latest
 ```
+3. Try running `stripey-horse`
 
 ### Manual Installation
 Download the latest binary for your platform from [Releases](https://github.com/benfaerber/stripey-horse/releases) and add it to your PATH.
@@ -61,14 +64,3 @@ go build -o stripey_horse
 
 - **Compile** - `./scripts/build.sh`
 - **Test Binary** - `./scripts/run_all.sh`
-
-## This uses process communication, why no FFI?
-This was a tough design but I decided process communication was better
-for my use case (a PHP app needing to render ZPL files to PNGs and serve them to customers).
-
-### Reasons
-- FFI would require going Go -> C -> PHP
-- The C wrapper code would require manual memory management
-- The `.so` would have to be installed in the PHP env instead of just installing a simple binary
-- FFI would connect PHP to this program. A crash would be fatal for PHP.  
-- FFI would have saved around 50ms invocation time, but for an app that takes 300ms to even render, not worth the trouble!
