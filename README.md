@@ -43,7 +43,7 @@ Luckily, there is a Go library that renders ZPL almost perfectly. This project p
 ## Installation
 
 ### Go Install
-1. Download [`go`](https://go.dev/) if you don't already have it.
+1. Download [`go`](https://go.dev/doc/install) if you don't already have it.
 2. Install the binary:
 ```bash
 go install github.com/benfaerber/stripey-horse@latest
